@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Caculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Love Calculator</h1>
+    
+        <div class="input-group">
+            <input type="text" id="name1" placeholder="Enter your name" aria-label="Your Name">
+            <input type="text" id="name2" placeholder="Enter their name" aria-label="Their Name">
+        </div>
+    
+        <button id="calculate-btn">Calculate Love</button>
+    
+        <div class="result-display" id="result-display">
+            <div id="love-percentage"></div>
+            <div id="love-message"></div>
+        </div>
+    </div>
+    
+    <div class="message-box-overlay" id="message-box-overlay">
+        <div class="message-box">
+            <h3 id="message-box-title"></h3>
+            <p id="message-box-text"></p>
+            <button id="message-box-ok-btn">OK</button>
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>

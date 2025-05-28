@@ -1,0 +1,272 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+    /* Friendly and modern font */
+}
+
+/* Body styling for full viewport height and a romantic gradient background */
+body {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+    /* Soft pink/orange gradient */
+    color: #333;
+    /* Default text color */
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
+}
+
+/* Main container for the calculator */
+.container {
+    width: 95%;
+    max-width: 600px;
+    /* Max width to keep content focused */
+    padding: 2.5rem;
+    background-color: rgba(255, 255, 255, 0.95);
+    /* Slightly transparent white */
+    border-radius: 2rem;
+    /* More rounded corners */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    /* Deeper, softer shadow */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    /* Space between sections */
+    animation: slideInUp 1s ease-out;
+    /* Animation for container entry */
+}
+
+/* Animation for container entry */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Game Title */
+h1 {
+    font-family: 'Pacifico', cursive;
+    /* Elegant, script font for title */
+    font-size: clamp(2.8rem, 7vw, 4.5rem);
+    /* Responsive font size */
+    color: #e91e63;
+    /* Deep pink for love theme */
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Input fields container */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    border: 2px solid #ff6f91;
+    /* Pink border */
+    border-radius: 0.75rem;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: #333;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: #e91e63;
+    /* Darker pink on focus */
+    box-shadow: 0 0 10px rgba(233, 30, 99, 0.3);
+    /* Pink glow on focus */
+}
+
+/* Calculate Button */
+#calculate-btn {
+    padding: 1rem 2rem;
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    background: linear-gradient(45deg, #ff6f91, #e91e63);
+    /* Pink to red gradient */
+    color: white;
+    border: none;
+    border-radius: 2.5rem;
+    /* Pill-shaped button */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(233, 30, 99, 0.3);
+    /* Pink shadow */
+    user-select: none;
+}
+
+#calculate-btn:hover {
+    transform: translateY(-5px);
+    /* Lift up on hover */
+    box-shadow: 0 12px 25px rgba(233, 30, 99, 0.4);
+    /* Enhanced shadow */
+    background: linear-gradient(45deg, #e91e63, #ff6f91);
+    /* Reverse gradient on hover */
+}
+
+#calculate-btn:active {
+    transform: translateY(0);
+    /* Press down effect */
+    box-shadow: 0 4px 10px rgba(233, 30, 99, 0.2);
+}
+
+/* Result Display Area */
+.result-display {
+    margin-top: 1.5rem;
+    background-color: #fff0f5;
+    /* Light pink background */
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+    min-height: 100px;
+    /* Ensure space for result */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    /* Hidden by default */
+    transform: scale(0.8);
+    /* Smaller by default */
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.result-display.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+#love-percentage {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(3rem, 8vw, 5rem);
+    /* Large, expressive percentage */
+    font-weight: 700;
+    color: #c2185b;
+    /* Darker pink */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0.5rem;
+    animation: pulseResult 1.5s infinite alternate;
+    /* Pulsing animation for percentage */
+}
+
+#love-message {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    color: #555;
+    line-height: 1.4;
+}
+
+/* Keyframes for result pulse animation */
+@keyframes pulseResult {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+/* Message box for alerts */
+.message-box-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.message-box-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.message-box {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+}
+
+.message-box-overlay.show .message-box {
+    transform: translateY(0);
+}
+
+.message-box h3 {
+    color: #e91e63;
+    margin-bottom: 1rem;
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+}
+
+.message-box p {
+    color: #555;
+    margin-bottom: 1.5rem;
+    font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+}
+
+.message-box button {
+    background: #e91e63;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+    transition: background-color 0.3s ease;
+}
+
+.message-box button:hover {
+    background: #c2185b;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .container {
+        padding: 1.5rem;
+        gap: 1rem;
+    }
+
+    h1 {
+        font-size: clamp(2.2rem, 9vw, 3.5rem);
+    }
+
+    .input-group input {
+        padding: 0.8rem 1rem;
+    }
+
+    #calculate-btn {
+        padding: 0.8rem 1.5rem;
+    }
+
+    .result-display {
+        padding: 1rem;
+    }
+}
